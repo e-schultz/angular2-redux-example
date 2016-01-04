@@ -9,6 +9,6 @@ bootstrap(
   App,
   [
     provider(store)
-    
+
   ]
 );

@@ -81,6 +81,7 @@ module.exports = {
       { test: /\.woff/, loader: 'url' },
       { test: /\.woff2/, loader: 'url' },
       { test: /\.ttf/, loader: 'url' },
-    ]
+    ],
+    noParse: [ /zone\.js\/dist\/.+/, /angular2\/bundles\/.+/ ]
   }
 }

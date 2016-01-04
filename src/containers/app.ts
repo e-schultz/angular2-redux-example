@@ -23,7 +23,9 @@ export default class App {
 
   constructor( @Inject('ngRedux') ngRedux) {
     
-    this.unsubscribe = ngRedux.connect(this.mapStateToThis, this.mapDispatchToThis)(this);
+    this.unsubscribe = ngRedux.connect(
+      this.mapStateToThis,
+      this.mapDispatchToThis)(this);
   }
 
   onDestroy() {
