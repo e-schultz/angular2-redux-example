@@ -1,12 +1,17 @@
 const express = require('express');
 const winston = require('winston');
 const chalk = require('chalk');
+const path = require('path');
+const serveWebpackClient = require('serve-webpack-client');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DOMAIN = '0.0.0.0';
 
-app.use('/', express.static('dist'));
+app.use(serveWebpackClient({
+  distPath: path.join(__dirname, 'dist'),
+  indexFileName: 'index.html',
+  webpackConfig: require('./webpack.config')
+}));
 
 app.listen(PORT, (err) => {
   if (err) {
@@ -14,5 +19,5 @@ app.listen(PORT, (err) => {
     return;
   }
 
-  winston.info(`Listening at http://${ chalk.green(DOMAIN) }:${ chalk.yellow(PORT) }`);
+  winston.info(`Listening on port ${ chalk.yellow(PORT) }`);
 });

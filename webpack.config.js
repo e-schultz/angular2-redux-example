@@ -32,12 +32,7 @@ const plugins = basePlugins
   .concat(process.env.NODE_ENV === 'development' ? devPlugins : []);
 
 module.exports = {
-  
-  stats: {
-    colors: true,
-    reasons: true
-  },
-  
+
   entry: {
     app: './src/index.ts',
     vendor: [
@@ -55,21 +50,21 @@ module.exports = {
       'redux-logger'
     ]
   },
-  
+
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].bundle.js',
+    filename: '[name].[hash].js',
     publicPath: "/",
-    sourceMapFilename: '[name].[hash].bundle.js.map',
+    sourceMapFilename: '[name].[hash].js.map',
     chunkFilename: '[id].chunk.js'
   },
-  
+
   devtool: 'source-map',
-  
+
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
   },
-  
+
   plugins: plugins,
 
   module: {
@@ -87,12 +82,5 @@ module.exports = {
       { test: /\.woff2/, loader: 'url' },
       { test: /\.ttf/, loader: 'url' },
     ]
-  },
-  
-  devServer: {
-    inline: true,
-    colors: true,
-    contentBase: './dist',
-    publicPath: '/'
   }
 }
