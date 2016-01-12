@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import logger from './configureLogger';
+import logger from './configure-logger';
 const thunk = require('redux-thunk');
 import reducer from '../reducers/index';
 
