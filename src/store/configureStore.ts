@@ -1,9 +1,12 @@
 import {createStore, applyMiddleware, compose} from 'redux';
+import logger from './configureLogger';
 const thunk = require('redux-thunk');
 import reducer from '../reducers/index';
 
+let middleware: Array<any> = [thunk, logger];
+
 const finalCreateStore = compose(
-  applyMiddleware(thunk)
+  applyMiddleware(...middleware)
 )(createStore);
 
 export default () => {
