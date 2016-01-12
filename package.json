@@ -1,5 +1,5 @@
 {
-  "name": "ng2-redux-starter",
+  "name": "angular2-redux-starter",
   "version": "0.1.0",
   "description": "A boiler-plate setup for Angular 2/Redux applications",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "node": "4.x"
   },
   "scripts": {
-    "postinstall": "npm run typings; npm run build;",
+    "postinstall": "npm run typings && npm run build",
     "typings": "rimraf typings && tsd install && tsd link",
     "dev": "NODE_ENV=development nodemon server.js",
     "start": "NODE_ENV=production node server.js",
@@ -24,10 +24,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rangle/ng2-redux-starter.git"
+    "url": "https://github.com/rangle/angular2-redux-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/rangle/ng2-redux-starter.git/issues"
+    "url": "https://github.com/rangle/angular2-redux-starter/issues"
   },
   "dependencies": {
     "angular2": "^2.0.0-beta.0",
