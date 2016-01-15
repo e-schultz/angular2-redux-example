@@ -21,6 +21,7 @@ const devPlugins = [];
 
 const prodPlugins = [
   new webpack.optimize.UglifyJsPlugin({
+    mangle: false,
     compress: {
       warnings: false
     }
@@ -84,4 +85,5 @@ module.exports = {
     ],
     noParse: [ /zone\.js\/dist\/.+/, /angular2\/bundles\/.+/ ]
   }
+    
 }
