@@ -2,6 +2,11 @@
 
 This is the initial version of our starter project using Angular 2.x, Redux, TypeScript and Webpack to tie it all together.
 
+## Getting Started
+
+Use our [starter script](https://www.npmjs.com/package/rangle-starter), with
+`angular2-redux-starter` as the `techStack` argument.
+
 ## Commands
 
 * `npm install`: install npm dependencies specified in package.json as well as typings specified in tsd.json (typings will be put into *typings* folder which is also git ignored).
@@ -26,3 +31,11 @@ Refer to the [issues section](https://github.com/rangle/angular2-redux-starter/i
 ## Example Application
 
 TBC
+
+## License
+
+Copyright (c) 2016 rangle.io
+
+[MIT License][MIT]
+
+[MIT]: ./LICENSE "Mit License"
