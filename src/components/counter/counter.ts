@@ -2,7 +2,7 @@
 import {Component, View} from 'angular2/core';
 @Component({
   selector: 'counter',
-  properties: [
+  inputs: [
     'counter',
     'increment',
     'decrement',
