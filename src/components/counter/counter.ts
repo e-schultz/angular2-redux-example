@@ -4,7 +4,7 @@ import {Component, View} from 'angular2/core';
   selector: 'counter',
   inputs: [
     'counter',
-    'increment', 
+    'increment',
     'decrement',
     'incrementIfOdd',
     'incrementAsync'
