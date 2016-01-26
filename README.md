@@ -32,6 +32,18 @@ Refer to the [issues section](https://github.com/rangle/angular2-redux-starter/i
 
 TBC
 
+## Want to deploy on Heroku?  Read this.
+
+By default, Heroku's node stack runs `npm install --production`, which ignores the  `devDependencies`
+section of your `package.json`. The convention in these cases is that only what is necessary 
+for the actual production run should be in `dependencies`.
+
+However this is at odds with modern JS bundlers like webpack, where almost everything is a `devDependency`;
+because Heroku does not separate the build and run environments, its default setup isn't the
+best fit.
+
+Here is a workaround: https://devcenter.heroku.com/articles/nodejs-support#customizing-the-build-process
+
 ## License
 
 Copyright (c) 2016 rangle.io
