@@ -22,11 +22,17 @@ Use our [starter script](https://www.npmjs.com/package/rangle-starter), with
 
 ## Improvements
 
-This is an initial version of this setup and will be expanded in the future. Refer to the [issues section](https://github.com/rangle/angular2-redux-starter/issues) to see what needs to be done, or create a [new one](https://github.com/rangle/angular2-redux-starter/issues/new).
+This is an initial version of this setup and will be expanded in the future. Refer to the [issues section](https://github.com/rangle/rangle-starter/issues) to see what needs to be done, or create a [new one](https://github.com/rangle/rangle-starter/issues/new).
+
+Issues for this particular starter project are tagged with the 'ng2' label.
 
 ## If something doesn't work
 
-Refer to the [issues section](https://github.com/rangle/angular2-redux-starter/issues) to see if this has already been logged. Otherwise create a [new issue](https://github.com/rangle/angular2-redux-starter/issues/new).
+We centralize issue management for all rangle starters in the [rangle-starter](https://github.com/rangle/rangle-starter) repository, to help us keep things consistent.
+
+Refer to the [issues section](https://github.com/rangle/rangle-starter/issues) to see if this has already been logged. Otherwise create a [new issue](https://github.com/rangle/rangle-starter/issues/new).
+
+Be sure to tag your new issue with the 'ng2' label so we can see which starter you're filing it for.
 
 ## Example Application
 
