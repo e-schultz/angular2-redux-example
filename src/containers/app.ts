@@ -1,6 +1,6 @@
 import {Component, View, Inject, OnDestroy, OnInit} from 'angular2/core';
 import {bindActionCreators} from 'redux';
-import {Counter} from '../components/counter/counter';
+import {Counter} from '../components/counter';
 import * as CounterActions from '../actions/counter';
 
 @Component({

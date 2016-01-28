@@ -1,12 +1,10 @@
 {
   "name":"angular2-redux-starter",
   "scripts":{},
-  "env":{
-   
+  "env":{   
     "NPM_CONFIG_PRODUCTION" : {
       "value":"false"
     }
-
   },
   "addons":[]
 }
