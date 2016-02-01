@@ -1,8 +1,7 @@
+'use strict';
 
 module.exports = function (config) {
-
   config.set({
-
     frameworks: [
       'mocha',
       'chai',
@@ -48,49 +47,22 @@ module.exports = function (config) {
           { test: /\.woff2/, loader: 'url' },
           { test: /\.ttf/, loader: 'url' },
         ],
-        // postLoaders: [
-        //   {
-        //     test: /\.ts$/,
-        //     exclude: [
-        //       /node_modules\//
-        //     ],
-        //     loader: 'istanbul-instrumenter'
-        //   }
-        // ]
       },
       stats: { colors: true, reasons: true },
       debug: false
     },
-    
+
     webpackServer: {
       noInfo: true // prevent console spamming when running in Karma!
     },
-    
-    reporters: ['mocha'], //'coverage'],
 
-    // coverageReporter: {
-    //   reporters: [
-    //     { type: 'json' },
-    //     { type: 'html' },
-    //     { type: 'text-summary' }
-    //   ],
-    //   dir: './app/__build/coverage'
-    // },
-
+    reporters: ['mocha'],
     port: 9999,
-
     colors: true,
-
-    //logLevel: config.LOG_DEBUG,
     logLevel: config.LOG_INFO,
-
     autoWatch: true,
-
     browsers: ['Chrome'], // Alternatively: 'PhantomJS'
-
     captureTimeout: 6000,
-
     singleRun: true
-
   });
 };

@@ -7,13 +7,7 @@ const store = configureStore();
 declare let __PRODUCTION__: any;
 
 if (__PRODUCTION__) {
-    enableProdMode();
+  enableProdMode();
 }
 
-bootstrap(
-  App,
-  [
-    provider(store)
-
-  ]
-);
+bootstrap(App, [ provider(store) ]);

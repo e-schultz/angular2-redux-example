@@ -3,6 +3,7 @@
   "buildOnSave": false,
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -12,6 +13,10 @@
   },
   "exclude": [
     "node_modules",
-    "app/__build"
+    "dist"
+  ],
+  "files": [
+    "typings/main.d.ts",
+    "node_modules/immutable/dist/immutable.d.ts"
   ]
 }

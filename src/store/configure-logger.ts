@@ -8,7 +8,7 @@ const logger = createLogger({
     predicate: (getState, action) => __DEV__ === true,
     stateTransformer: (state) => {
         let newState = {};
-        for (var i of Object.keys(state)) {
+        for (let i of Object.keys(state)) {
             if (Iterable.isIterable(state[i])) {
                 newState[i] = state[i].toJS();
             } else {
