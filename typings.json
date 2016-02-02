@@ -2,6 +2,7 @@
   "ambientDependencies": {
     "assertion-error": "github:DefinitelyTyped/DefinitelyTyped/assertion-error/assertion-error.d.ts#bdaf2f0eb19edee26248c80bab4947e9b70e4217",
     "chai": "github:DefinitelyTyped/DefinitelyTyped/chai/chai.d.ts#bdaf2f0eb19edee26248c80bab4947e9b70e4217",
+    "immutable": "npm:immutable/dist/immutable.d.ts",
     "mocha": "github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#d6dd320291705694ba8e1a79497a908e9f5e6617",
     "redux": "github:DefinitelyTyped/DefinitelyTyped/redux/redux.d.ts#7136728255d96038795d93c3e4b43c3c7de8ac1e",
     "redux-logger": "github:DefinitelyTyped/DefinitelyTyped/redux-logger/redux-logger.d.ts#7136728255d96038795d93c3e4b43c3c7de8ac1e"
