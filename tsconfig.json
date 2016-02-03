@@ -13,10 +13,8 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
-  ],
-  "files": [
-    "typings/main.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts"
+    "dist",
+    "typings/main",
+    "typings/main.d.ts"
   ]
 }
