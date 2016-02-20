@@ -6,7 +6,7 @@ describe('counter reducers', () => {
     chai.expect(
       counter(undefined, {})  
     )
-    .to.equal(0)
+    .to.equal(0);
   });
 
   it('should handle INCREMENT_COUNTER', () => {
@@ -15,7 +15,7 @@ describe('counter reducers', () => {
         type: INCREMENT_COUNTER
       })  
     )
-    .to.equal(1)
+    .to.equal(1);
   });
 
   it('should handle DECREMENT_COUNTER', () => {
@@ -24,6 +24,6 @@ describe('counter reducers', () => {
         type: DECREMENT_COUNTER
       })  
     )
-    .to.equal(0)
+    .to.equal(0);
   });
 });

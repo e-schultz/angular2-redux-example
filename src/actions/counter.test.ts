@@ -18,15 +18,16 @@ describe('counter action creators', () => {
       });
   });
 
-  it('incrementIfOdd should dispatch INCREMENT_COUNTER if counter is odd', (done) => {
+  it('incrementIfOdd should dispatch INCREMENT_COUNTER if counter is odd', 
+    (done) => {
 
     const expectedAction = { type: INCREMENT_COUNTER };
 
     const store = mockStore({
       getState: () => {
         return { 
-          counter: 1 
-        }
+          counter: 1
+        };
       },
       dispatch: (action) => {
         chai.expect(action)
@@ -39,14 +40,15 @@ describe('counter action creators', () => {
     store.dispatch(CounterActions.incrementIfOdd());
   });
 
-  it('incrementAsync should dispatch INCREMENT_COUNTER after given delay', (done) => {
+  it('incrementAsync should dispatch INCREMENT_COUNTER after given delay',
+    (done) => {
     const expectedAction = { type: INCREMENT_COUNTER };
 
     const store = mockStore({
       getState: () => {
         return { 
           counter: 0 
-        }
+        };
       },
       dispatch: (action) => {
         chai.expect(action)

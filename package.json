@@ -19,7 +19,8 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack",
-    "test": "karma start"
+    "test": "npm run lint && karma start",
+    "lint": "tslint 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
