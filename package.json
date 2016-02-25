@@ -14,13 +14,13 @@
   "scripts": {
     "postinstall": "npm run typings && npm run build",
     "typings": "rimraf typings && typings install",
-    "dev": "NODE_ENV=development nodemon server.js",
-    "start": "NODE_ENV=production node server.js",
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "test": "npm run lint && karma start",
-    "lint": "tslint 'src/**/*.ts'"
+    "lint": "tslint './src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "angular2": "2.0.0-beta.7",
     "chai": "^3.5.0",
     "chalk": "^1.1.1",
+    "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "es6-promise": "3.0.2",
     "es6-shim": "^0.33.3",
