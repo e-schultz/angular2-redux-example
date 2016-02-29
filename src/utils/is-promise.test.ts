@@ -8,7 +8,7 @@ describe('isPromise', () => {
       promise,
     };
 
-    chai.expect(isPromise(payload));
+    chai.expect(isPromise(payload)).to.be.true;
   });
 
   it(`should return false if something that
@@ -18,9 +18,9 @@ describe('isPromise', () => {
     const badPayload3 = 'hello world';
     const badPayload4 = 'hello world';
 
-    chai.expect(!isPromise({ promise: badPayload1 }));
-    chai.expect(!isPromise({ promise: badPayload2 }));
-    chai.expect(!isPromise({ promise: badPayload3 }));
-    chai.expect(!isPromise({ promise: badPayload4 }));
+    chai.expect(isPromise({ promise: badPayload1 })).to.be.false;
+    chai.expect(isPromise({ promise: badPayload2 })).to.be.false;
+    chai.expect(isPromise({ promise: badPayload3 })).to.be.false;
+    chai.expect(isPromise({ promise: badPayload4 })).to.be.false;
   });
 });
