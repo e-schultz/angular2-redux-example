@@ -1,5 +1,4 @@
-export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants';
 
 export function increment() {
   return {

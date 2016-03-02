@@ -68,7 +68,6 @@
     "postcss-loader": "^0.8.1",
     "ramda": "^0.19.1",
     "raw-loader": "^0.5.1",
-    "react": "^0.14.6",
     "redux": "^3.0.6",
     "redux-devtools": "^3.0.1",
     "redux-logger": "^2.4.0",
