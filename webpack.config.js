@@ -1,8 +1,7 @@
-'use strict';
-
 const path = require("path");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const proxy = require('./server/webpack-dev-proxy');
 
 const basePlugins = [
   new webpack.DefinePlugin({
@@ -70,6 +69,11 @@ module.exports = {
   },
 
   plugins: plugins,
+
+  devServer: {
+    historyApiFallback: { index: '/' },
+    proxy: proxy(),
+  },
 
   module: {
     preLoaders: [{
