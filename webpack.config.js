@@ -83,7 +83,7 @@ module.exports = {
     loaders: [
       { test: /\.ts$/, loader: 'ts', exclude: /node_modules/ },
       { test: /\.html$/, loader: 'raw' },
-      { test: /\.css$/, loader: 'style-loader!css-loader?sourceMap' },
+      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
       { test: /\.svg/, loader: 'url' },
       { test: /\.eot/, loader: 'url' },
       { test: /\.woff/, loader: 'url' },
@@ -91,6 +91,17 @@ module.exports = {
       { test: /\.ttf/, loader: 'url' },
     ],
     noParse: [ /zone\.js\/dist\/.+/, /angular2\/bundles\/.+/ ]
-  }
+  },
 
+  postcss: function() {
+    return [
+      require('postcss-import')({
+        addDependencyTo: webpack
+      }),
+      require('postcss-cssnext')({
+        browsers: ['ie >= 8', 'last 2 versions']
+      }),
+      require('autoprefixer')
+    ];
+  }
 }
