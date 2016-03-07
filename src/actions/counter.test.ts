@@ -1,5 +1,5 @@
 import {mockStore} from '../tests.helpers';
-import {INCREMENT_COUNTER, DECREMENT_COUNTER} from './counter';
+import {INCREMENT_COUNTER, DECREMENT_COUNTER} from '../constants';
 import * as CounterActions from './counter';
 
 describe('counter action creators', () => {

@@ -5,6 +5,7 @@ import App from './containers/app';
 
 // Global styles
 import './styles/index.css';
+import {ROUTER_PROVIDERS} from 'angular2/router';
 
 const provider = require('ng2-redux').provider;
 const store = configureStore();
@@ -14,4 +15,4 @@ if (__PRODUCTION__) {
   enableProdMode();
 }
 
-bootstrap(App, [ provider(store) ]);
+bootstrap(App, [ provider(store), ROUTER_PROVIDERS ]);
