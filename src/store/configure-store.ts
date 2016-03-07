@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import logger from './configure-logger';
-const thunk = require('redux-thunk');
+const thunk = require('redux-thunk').default;
 import reducer from '../reducers/index';
 
 let middleware: Array<any> = [thunk, logger];
