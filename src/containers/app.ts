@@ -1,25 +1,45 @@
-import {Component, View, Inject, OnDestroy, OnInit} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import { Component, ViewEncapsulation } from 'angular2/core';
+import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import AboutPage from '../containers/about-page';
 import CounterPage from '../containers/counter-page';
+import { Navigator, NavigatorItem, Logo } from '../components';
 
 @Component({
-  selector: 'root'
-})
-@View({
-  directives: [ROUTER_DIRECTIVES],
+  selector: 'root',
+  directives: [ROUTER_DIRECTIVES, Navigator, NavigatorItem, Logo],
+  encapsulation: ViewEncapsulation.None,
+  styles: [require('../styles/index.css')],
   template: `
-  <nav>
-    <a [routerLink]="['Counter']">Counter</a>
-    <a [routerLink]="['About']">About</a>
-  </nav>
-  <router-outlet></router-outlet>
+    <navigator>
+      <navigator-item class="p1">
+        <logo></logo>
+      </navigator-item>
+      <navigator-item class="p1">
+        <a [routerLink]="['Counter']"
+          class="text-decoration-none">Counter</a>
+      </navigator-item>
+      <navigator-item class="p1">
+        <a [routerLink]="['About']"
+          class="text-decoration-none">About Us</a>
+      </navigator-item>
+    </navigator>
+    <div class="mt3 p1">
+      <router-outlet></router-outlet>
+    </div>
   `
 })
 @RouteConfig([
-  { path: '/', name: 'Counter', component: CounterPage, useAsDefault: true },
-  { path: 'about', name: 'About', component: AboutPage }
+  {
+    path: '/counter',
+    name: 'Counter',
+    component: CounterPage,
+    useAsDefault: true
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: AboutPage
+  }
 ])
 export default class App {
-
-}
+};
