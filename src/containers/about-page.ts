@@ -1,32 +1,16 @@
-import {Component, View, Inject, OnDestroy, OnInit} from 'angular2/core';
+import { Component } from 'angular2/core';
 
 @Component({
-  selector: 'about-page'
-})
-@View({
+  selector: 'about-page',
   template: `
-    <div>About Page</div>
+    <div class="col-12">
+      <h1>About Us</h1>
+      <p>
+        Rangle.io is a next-generation HTML5 design and development firm
+        dedicated to modern, responsive web and mobile applications.
+      </p>
+    </div>
   `
 })
 export default class AboutPage {
-
-  protected unsubscribe: Function;
-
-  constructor( @Inject('ngRedux') private ngRedux) {
-
-  }
-
-  ngOnInit() {
-    this.unsubscribe = this.ngRedux.connect(
-      this.mapStateToThis,
-      this.mapDispatchToThis)(this);
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe();
-  }
-
-  mapStateToThis(state) { return {}; }
-
-  mapDispatchToThis(dispatch) {}
 }

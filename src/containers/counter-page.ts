@@ -1,28 +1,27 @@
-import {Component, View, Inject, OnDestroy, OnInit} from 'angular2/core';
-import {bindActionCreators} from 'redux';
+import { Component, Inject } from 'angular2/core';
+import { bindActionCreators } from 'redux';
 
 import * as CounterActions from '../actions/counter';
-import {Counter} from '../components/counter';
+import { Counter } from '../components';
 
 @Component({
-  selector: 'counter-page'
-})
-@View({
+  selector: 'counter-page',
   directives: [Counter],
   template: `
-  <counter [counter]="counter"
-    [increment]="increment"
-    [decrement]="decrement"
-    [incrementIfOdd]="incrementIfOdd"
-    [incrementAsync]="incrementAsync">
-  </counter>
+    <div class="col col-4">
+      <h1 class="center">Counter</h1>
+      <counter [counter]="counter"
+        [increment]="increment"
+        [decrement]="decrement">
+      </counter>
+    </div>
   `
 })
 export default class CounterPage {
 
-  protected unsubscribe: Function;
+  private unsubscribe: Function;
 
-  constructor( @Inject('ngRedux') private ngRedux) {
+  constructor(@Inject('ngRedux') private ngRedux) {
 
   }
 
@@ -39,7 +38,7 @@ export default class CounterPage {
   mapStateToThis(state) {
     return {
       counter: state.counter
-    }; 
+    };
   }
 
   mapDispatchToThis(dispatch) {

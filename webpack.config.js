@@ -83,7 +83,7 @@ module.exports = {
     loaders: [
       { test: /\.ts$/, loader: 'ts', exclude: /node_modules/ },
       { test: /\.html$/, loader: 'raw' },
-      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
+      { test: /\.css$/, loader: 'to-string!css!postcss'},
       { test: /\.svg/, loader: 'url' },
       { test: /\.eot/, loader: 'url' },
       { test: /\.woff/, loader: 'url' },
