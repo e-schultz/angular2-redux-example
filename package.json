@@ -82,7 +82,6 @@
     "ramda": "^0.19.1",
     "raw-loader": "^0.5.1",
     "redux": "^3.0.6",
-    "redux-devtools": "^3.0.1",
     "redux-logger": "^2.4.0",
     "redux-thunk": "^2.0.1",
     "reflect-metadata": "0.1.2",
