@@ -1,13 +1,36 @@
+///<reference path="./dev-types.d.ts"/>
+
 import {createStore, applyMiddleware, compose} from 'redux';
 import logger from './configure-logger';
 const thunk = require('redux-thunk').default;
 import reducer from '../reducers/index';
 
-let middleware: Array<any> = [thunk, logger];
-
 const finalCreateStore = compose(
-  applyMiddleware(...middleware)
+  _getMiddleware(),
+  ..._getEnhancers()
 )(createStore);
+
+function _getMiddleware() {
+  let middleware = [
+    thunk,
+  ];
+
+  if (__DEV__) {
+    middleware = [...middleware, logger];
+  }
+
+  return applyMiddleware(...middleware);
+}
+
+function _getEnhancers() {
+  let enhancers = [];
+
+  if (__DEV__ && window.devToolsExtension) {
+    enhancers = [...enhancers, window.devToolsExtension() ];
+  }
+
+  return enhancers;
+}
 
 export default () => {
   return finalCreateStore(reducer);
