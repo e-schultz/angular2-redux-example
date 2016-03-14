@@ -3,7 +3,9 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import logger from './configure-logger';
 const thunk = require('redux-thunk').default;
+import promiseMiddleware from '../middleware/promise-middleware';
 import reducer from '../reducers/index';
+
 
 const finalCreateStore = compose(
   _getMiddleware(),
@@ -11,9 +13,8 @@ const finalCreateStore = compose(
 )(createStore);
 
 function _getMiddleware() {
-  let middleware = [
-    thunk,
-  ];
+  let middleware = [promiseMiddleware, thunk];
+
 
   if (__DEV__) {
     middleware = [...middleware, logger];

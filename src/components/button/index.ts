@@ -2,12 +2,15 @@ import { Component, EventEmitter } from 'angular2/core';
 
 @Component({
   selector: 'btn',
-  inputs: ['classStyles'],
+  inputs: ['classStyles', 'type'],
   outputs: ['onClick'],
   styles: [require('./button.css')],
   template: `
-    <button (click)="handleClick($event)"
+    <button
+      (click)="handleClick($event)"
+      type="{{type || 'button'}}"
       class="btn btn-primary {{classStyles}}">
+
       <ng-content></ng-content>
     </button>
   `
