@@ -2,9 +2,8 @@ import { Component } from 'angular2/core';
 
 @Component({
   selector: 'form-error',
-  inputs: ['isVisible'],
   template: `
-    <div class="bold black" [ngClass]="isVisible ? 'block' : 'hide'">
+    <div class="bold black">
       <ng-content></ng-content>
     </div>
   `
