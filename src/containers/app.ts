@@ -51,8 +51,8 @@ import {
               session.getIn(['user', 'firstName'], '') + ' ' +
               session.getIn(['user', 'lastName'], '') }}
           </navigator-item>
-          <navigator-item *ngIf="isLoggedIn">
-            <btn (click)="logout()" class="bg-red white">
+          <navigator-item [hidden]="!isLoggedIn">
+            <btn class="bg-red white" type="button" (click)="logout()" >
               Logout
             </btn>
           </navigator-item>
