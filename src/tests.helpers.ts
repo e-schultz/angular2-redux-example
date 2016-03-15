@@ -1,8 +1,8 @@
 import {applyMiddleware, compose, createStore} from 'redux';
+import ReduxThunk from 'redux-thunk';
 import reducer from './reducers/index';
-const thunk = require('redux-thunk').default;
 
-const middlewares = [thunk];
+const middlewares = [ReduxThunk];
 
 export function mockStore({ getState, dispatch }) {
   function createStore() {

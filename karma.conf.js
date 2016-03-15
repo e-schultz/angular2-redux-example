@@ -1,62 +1,63 @@
 'use strict';
 
+const loaders = require('./webpack/loaders');
+
 module.exports = function (config) {
   config.set({
     frameworks: [
       'mocha',
       'chai',
-      'sinon'
+      'sinon',
+      'source-map-support',
     ],
 
-    files: [
-      './src/tests.entry.ts'
-    ],
-
-    plugins: [
-      require('karma-mocha'),
-      require('karma-chai'),
-      require('karma-sinon'),
-      require('karma-chrome-launcher'),
-      require('karma-webpack'),
-      require('karma-sourcemap-loader'),
-      require('karma-mocha-reporter'),
-      require('karma-coverage')
-    ],
+    files: ['./src/tests.entry.ts'],
 
     preprocessors: {
-      './src/tests.entry.ts': [
+      './src/**/*.ts': [
         'webpack',
-        'sourcemap',
+        'sourcemap'
+      ],
+      './src/**/!(*.test|tests.*).ts': [
         'coverage'
-      ]
+      ],
     },
 
     webpack: {
+      entry: './src/tests.entry.ts',
       devtool: 'source-map',
+      verbose: true,
       resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
       },
       module: {
         loaders: [
-          { test: /\.ts$/, loader: 'ts', exclude: /node_modules/ },
-          { test: /\.html$/, loader: 'raw' },
-          { test: /\.css$/, loader: 'style-loader!css-loader' },
-          { test: /\.svg/, loader: 'url' },
-          { test: /\.eot/, loader: 'url' },
-          { test: /\.woff/, loader: 'url' },
-          { test: /\.woff2/, loader: 'url' },
-          { test: /\.ttf/, loader: 'url' },
+          loaders.ts
         ],
+        postLoaders: [
+          loaders.istanbulInstrumenter
+        ]
       },
       stats: { colors: true, reasons: true },
-      debug: false
+      debug: true
     },
 
     webpackServer: {
       noInfo: true // prevent console spamming when running in Karma!
     },
 
-    reporters: ['mocha'],
+    reporters: ['mocha', 'coverage'],
+    // only output json report to be remapped by remap-istanbul
+    coverageReporter: {
+      reporters: [
+        { type: 'json' }
+      ],
+      dir: './coverage/',
+      subdir: function (browser) {
+        return browser.toLowerCase().split(/[ /-]/)[0]; // returns 'chrome'
+      }
+    },
+
     port: 9999,
     colors: true,
     logLevel: config.LOG_INFO,
