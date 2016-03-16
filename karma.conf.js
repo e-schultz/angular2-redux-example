@@ -32,7 +32,7 @@ module.exports = function (config) {
       },
       module: {
         loaders: [
-          loaders.ts
+          loaders.tsTest
         ],
         postLoaders: [
           loaders.istanbulInstrumenter

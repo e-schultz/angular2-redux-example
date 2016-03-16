@@ -1,28 +1,33 @@
+'use strict';
+
 exports.tslint = {
   test: /\.ts$/,
-  loader: 'tslint'
-};
-
-exports.istanbulInstrumenter = {
-  test: /\.ts$/,
-  loader: 'istanbul-instrumenter',
-  exclude: /(node_modules\/|\.test\.ts$|tests\.\w+\.ts$)/
-};
-
-exports.ts = {
-  test: /\.ts$/,
-  loader: 'ts-loader',
+  loader: 'tslint',
   exclude: /node_modules/
 };
 
+exports.tsTest = loadTs('ts', true);
+exports.istanbulInstrumenter = loadTs('istanbul-instrumenter');
+exports.ts = loadTs();
+
+function loadTs (loader, inTest) {
+  return {
+    test: /\.ts$/,
+    loader: loader || 'ts',
+    exclude: inTest ? /node_modules/ : /(node_modules\/|\.test\.ts$|tests\.\w+\.ts$)/
+  };
+}
+
 exports.html = {
   test: /\.html$/,
-  loader: 'raw'
+  loader: 'raw',
+  exclude: /node_modules/
 };
 
 exports.css = {
   test: /\.css$/,
-  loader: 'to-string!css!postcss'
+  loader: 'to-string!css!postcss',
+  exclude: /node_modules/
 };
 
 exports.svg = makeUrlLoader(/\.svg$/);
@@ -34,6 +39,7 @@ exports.ttf = makeUrlLoader(/\.ttf$/);
 function makeUrlLoader (pattern) {
   return {
     test: pattern,
-    loader: 'url'
+    loader: 'url',
+    exclude: /node_modules/
   };
 }
