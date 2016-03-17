@@ -52,6 +52,7 @@ module.exports = {
       'angular2/http',
       'redux',
       'redux-thunk',
+      'redux-localstorage',
       'ng2-redux',
       'redux-logger'
     ]

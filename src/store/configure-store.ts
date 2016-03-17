@@ -1,12 +1,12 @@
 ///<reference path="./dev-types.d.ts"/>
 
 import {createStore, applyMiddleware, compose} from 'redux';
-import { fromJS } from 'immutable';
+import {fromJS} from 'immutable';
+import ReduxThunk from 'redux-thunk';
 import logger from './configure-logger';
 import promiseMiddleware from '../middleware/promise-middleware';
 import reducer from '../reducers/index';
 const persistState = require('redux-localstorage');
-const thunk = require('redux-thunk').default;
 
 const storageConfig = {
   key: 'angular2-redux-seed',
@@ -20,7 +20,7 @@ const storageConfig = {
 };
 
 function _getMiddleware() {
-  let middleware = [promiseMiddleware, thunk];
+  let middleware = [promiseMiddleware, ReduxThunk];
 
   if (__DEV__) {
     middleware = [...middleware, logger];
