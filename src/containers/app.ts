@@ -1,4 +1,10 @@
-import { Component, ViewEncapsulation, Inject } from 'angular2/core';
+import {
+  Component,
+  ViewEncapsulation,
+  Inject,
+  ApplicationRef
+} from 'angular2/core';
+
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { bindActionCreators } from 'redux';
 
@@ -78,21 +84,29 @@ import {
   }
 ])
 export default class App {
+  private disconnect: Function;
   private unsubscribe: Function;
   private isLoggedIn: Boolean;
   private session: any;
 
-  constructor(@Inject('ngRedux') private ngRedux) {
+  constructor(
+    @Inject('ngRedux') private ngRedux,
+    private applicationRef: ApplicationRef) {
   }
 
   ngOnInit() {
-    this.unsubscribe = this.ngRedux.connect(
+    this.disconnect = this.ngRedux.connect(
       this.mapStateToThis,
       this.mapDispatchToThis)(this);
+
+    this.unsubscribe = this.ngRedux.subscribe(() => {
+      this.applicationRef.tick();
+    });
   }
 
   ngOnDestroy() {
     this.unsubscribe();
+    this.disconnect();
   }
 
   mapStateToThis(state) {

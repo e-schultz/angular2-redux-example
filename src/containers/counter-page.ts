@@ -1,4 +1,4 @@
-import { Component, Inject } from 'angular2/core';
+import { Component, Inject, ApplicationRef } from 'angular2/core';
 import { bindActionCreators } from 'redux';
 
 import * as CounterActions from '../actions/counter';
@@ -18,21 +18,26 @@ import { Counter } from '../components';
   `
 })
 export default class CounterPage {
-
+  private disconnect: Function;
   private unsubscribe: Function;
 
-  constructor(@Inject('ngRedux') private ngRedux) {
-
-  }
+  constructor(
+    @Inject('ngRedux') private ngRedux,
+    private applicationRef: ApplicationRef) {}
 
   ngOnInit() {
-    this.unsubscribe = this.ngRedux.connect(
+    this.disconnect = this.ngRedux.connect(
       this.mapStateToThis,
       this.mapDispatchToThis)(this);
+
+    this.unsubscribe = this.ngRedux.subscribe(() => {
+      this.applicationRef.tick();
+    });
   }
 
   ngOnDestroy() {
     this.unsubscribe();
+    this.disconnect();
   }
 
   mapStateToThis(state) {
