@@ -1,29 +1,31 @@
+import * as assert from 'assert';
+import fireAction from '../utils/fire-action';
+import counterReducer from './counter';
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants';
-import counter from './counter'; 
+import { Map } from 'immutable';
 
-describe('counter reducers', () => {
-  it('should handle initial state', () => {
-    chai.expect(
-      counter(undefined, {})  
-    )
-    .to.equal(0);
+let state = counterReducer();
+
+describe('counter reducer', () => {
+  describe('inital state', () => {
+    it('should be a Map', () => {
+      assert.strictEqual(Map.isMap(state), true);
+    });
   });
 
-  it('should handle INCREMENT_COUNTER', () => {
-    chai.expect(
-      counter(0, {
-        type: INCREMENT_COUNTER
-      })  
-    )
-    .to.equal(1);
+  describe('on INCREMENT_COUNTER', () => {
+    it('should increment state.count', () => {
+      const previousValue = state.get('count');
+      state = fireAction(counterReducer, state, INCREMENT_COUNTER);
+      assert.strictEqual(state.get('count'), previousValue + 1);
+    });
   });
 
-  it('should handle DECREMENT_COUNTER', () => {
-    chai.expect(
-      counter(1, {
-        type: DECREMENT_COUNTER
-      })  
-    )
-    .to.equal(0);
+  describe('on DECREMENT_COUNTER', () => {
+    it('should decrement state.count', () => {
+      const previousValue = state.get('count');
+      state = fireAction(counterReducer, state, DECREMENT_COUNTER);
+      assert.strictEqual(state.get('count'), previousValue - 1);
+    });
   });
 });

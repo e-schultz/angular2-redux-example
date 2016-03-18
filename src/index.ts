@@ -5,7 +5,7 @@ import configureStore from './store/configure-store';
 import App from './containers/app';
 
 const provider = require('ng2-redux').provider;
-const store = configureStore();
+const store = configureStore({});
 declare let __PRODUCTION__: any;
 
 if (__PRODUCTION__) {
