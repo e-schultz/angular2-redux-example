@@ -37,7 +37,7 @@ export default class CounterPage {
 
   mapStateToThis(state) {
     return {
-      counter: state.counter
+      counter: state.counter.get('count')
     };
   }
 
