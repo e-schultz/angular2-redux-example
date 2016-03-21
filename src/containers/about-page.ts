@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 
 @Component({
-  selector: 'about-page',
+  selector: 'rio-about-page',
   template: `
     <div class="col-12">
       <h1>About Us</h1>
@@ -12,5 +12,4 @@ import { Component } from 'angular2/core';
     </div>
   `
 })
-export default class AboutPage {
-}
+export class RioAboutPage {}

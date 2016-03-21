@@ -1,8 +1,15 @@
-import {Component, View, Inject, enableProdMode, provide} from 'angular2/core';
-import {bootstrap} from 'angular2/bootstrap';
-import {ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
+import {
+  Component,
+  View,
+  Inject,
+  enableProdMode,
+  provide 
+} from 'angular2/core';
+
+import { bootstrap} from 'angular2/bootstrap';
+import { ROUTER_PROVIDERS, APP_BASE_HREF } from 'angular2/router';
 import configureStore from './store/configure-store';
-import App from './containers/app';
+import { RioSampleApp } from './containers/sample-app';
 
 const provider = require('ng2-redux').provider;
 const store = configureStore({});
@@ -12,7 +19,7 @@ if (__PRODUCTION__) {
   enableProdMode();
 }
 
-bootstrap(App,
+bootstrap(RioSampleApp,
   [provider(store),
   ROUTER_PROVIDERS,
   provide(APP_BASE_HREF, { useValue: '/' })

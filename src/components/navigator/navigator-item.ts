@@ -1,12 +1,11 @@
 import { Component } from 'angular2/core';
 
 @Component({
-  selector: 'navigator-item',
+  selector: 'rio-navigator-item',
   template: `
     <div>
       <ng-content></ng-content>
     </div>
   `
 })
-export class NavigatorItem {
-};
+export class RioNavigatorItem {};

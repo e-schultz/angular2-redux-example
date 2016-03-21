@@ -1,29 +1,30 @@
-import { Component } from 'angular2/core';
-import { Button } from '../button';
+import { Component, Input } from 'angular2/core';
+import { RioButton } from '../button';
 
 @Component({
-  selector: 'counter',
-  inputs: [
-    'counter',
-    'increment',
-    'decrement'
-  ],
+  selector: 'rio-counter',
   template: `
     <div class="flex">
       <div class="flex-auto flex-center center">
-        <btn classStyles="square-button bg-black" (onClick)="decrement()">
+        <rio-button
+          classStyles="square-button bg-black"
+          (onClick)="decrement()">
           -
-        </btn>
+        </rio-button>
       </div>
       <div class="flex-auto flex-center center h1">{{ counter }}</div>
       <div class="flex-auto flex-center center">
-        <btn classStyles="square-button" (onClick)="increment()">
+        <rio-button classStyles="square-button"
+          (onClick)="increment()">
           +
-        </btn>
+        </rio-button>
       </div>
     </div>
   `,
-  directives: [Button]
+  directives: [RioButton]
 })
-export class Counter {
+export class RioCounter {
+  @Input() counter: number;
+  @Input() increment: () => void;
+  @Input() decrement: () => void;
 };

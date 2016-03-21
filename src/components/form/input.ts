@@ -1,9 +1,8 @@
-import { Component } from 'angular2/core';
+import { Component, Input } from 'angular2/core';
 import { NgFormControl } from 'angular2/common';
 
 @Component({
-  selector: 'form-input',
-  inputs: ['inputType', 'placeholder', 'formControl'],
+  selector: 'rio-input',
   directives: [ NgFormControl ],
   template: `
     <input
@@ -14,5 +13,8 @@ import { NgFormControl } from 'angular2/common';
     />
   `
 })
-export class Input {
+export class RioInput {
+  @Input() inputType: string;
+  @Input() placeholder: string;
+  @Input() formControl: NgFormControl;
 };
