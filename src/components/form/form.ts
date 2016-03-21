@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 
 @Component({
-  selector: 'custom-form',
+  selector: 'rio-form',
   styles: [require('./form.css')],
   template: `
     <form>
@@ -9,5 +9,4 @@ import { Component } from 'angular2/core';
     </form>
   `
 })
-export class Form {
-};
+export class RioForm {};

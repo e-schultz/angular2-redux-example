@@ -11,59 +11,60 @@ import { bindActionCreators } from 'redux';
 import * as SessionActions from '../actions/session';
 import {loginUser, logoutUser} from '../actions/session';
 
-import AboutPage from '../containers/about-page';
-import CounterPage from '../containers/counter-page';
+import { RioAboutPage } from '../containers/about-page';
+import { RioCounterPage } from '../containers/counter-page';
 
 import {
-  Button,
-  Navigator,
-  NavigatorItem,
-  Logo,
-  LoginModal
+  RioButton,
+  RioNavigator,
+  RioNavigatorItem,
+  RioLogo,
+  RioLoginModal
 } from '../components';
 
 @Component({
-  selector: 'root',
+  selector: 'rio-sample-app',
   directives: [
-    ROUTER_DIRECTIVES, Navigator, NavigatorItem,
-    LoginModal, Logo, Button
+    ROUTER_DIRECTIVES, RioNavigator, RioNavigatorItem,
+    RioLoginModal, RioLogo, RioButton
   ],
+  // Global styles imported in the app component.
   encapsulation: ViewEncapsulation.None,
   styles: [require('../styles/index.css')],
   template: `
     <div>
-      <login-modal
+      <rio-login-modal
         (onSubmit)="login($event)"
         [hasError]="session.get('hasError', false)"
         [isPending]="session.get('isLoading', false)"
-        *ngIf="!isLoggedIn"></login-modal>
-      <navigator>
+        *ngIf="!isLoggedIn"></rio-login-modal>
+      <rio-navigator>
         <div class="flex flex-auto">
-          <navigator-item class="p1">
-            <logo></logo>
-          </navigator-item>
-          <navigator-item *ngIf="isLoggedIn" class="p1">
+          <rio-navigator-item class="p1">
+            <rio-logo></rio-logo>
+          </rio-navigator-item>
+          <rio-navigator-item *ngIf="isLoggedIn" class="p1">
             <a [routerLink]="['Counter']"
               class="text-decoration-none">Counter</a>
-          </navigator-item>
-          <navigator-item *ngIf="isLoggedIn" class="p1">
+          </rio-navigator-item>
+          <rio-navigator-item *ngIf="isLoggedIn" class="p1">
             <a [routerLink]="['About']"
               class="text-decoration-none">About Us</a>
-          </navigator-item>
+          </rio-navigator-item>
         </div>
         <div class="flex flex-end">
-          <navigator-item *ngIf="isLoggedIn" class="p1 bold">
+          <rio-navigator-item *ngIf="isLoggedIn" class="p1 bold">
             {{
               session.getIn(['user', 'firstName'], '') + ' ' +
               session.getIn(['user', 'lastName'], '') }}
-          </navigator-item>
-          <navigator-item [hidden]="!isLoggedIn">
-            <btn class="bg-red white" type="button" (click)="logout()" >
+          </rio-navigator-item>
+          <rio-navigator-item [hidden]="!isLoggedIn">
+            <rio-button class="bg-red white" type="button" (click)="logout()" >
               Logout
-            </btn>
-          </navigator-item>
+            </rio-button>
+          </rio-navigator-item>
         </div>
-      </navigator>
+      </rio-navigator>
       <div class="mt3 p1">
         <router-outlet *ngIf="isLoggedIn"></router-outlet>
       </div>
@@ -74,16 +75,16 @@ import {
   {
     path: '/counter',
     name: 'Counter',
-    component: CounterPage,
+    component: RioCounterPage,
     useAsDefault: true
   },
   {
     path: '/about',
     name: 'About',
-    component: AboutPage
+    component: RioAboutPage
   }
 ])
-export default class App {
+export class RioSampleApp {
   private disconnect: Function;
   private unsubscribe: Function;
   private isLoggedIn: Boolean;

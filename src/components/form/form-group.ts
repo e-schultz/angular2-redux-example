@@ -1,12 +1,11 @@
 import { Component } from 'angular2/core';
 
 @Component({
-  selector: 'form-group',
+  selector: 'rio-form-group',
   template: `
     <div class="p2">
       <ng-content></ng-content>
     </div>
   `
 })
-export class FormGroup {
-};
+export class RioFormGroup {};

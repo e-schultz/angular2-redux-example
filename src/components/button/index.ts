@@ -1,9 +1,7 @@
-import { Component, EventEmitter } from 'angular2/core';
+import { Component, EventEmitter, Input, Output } from 'angular2/core';
 
 @Component({
-  selector: 'btn',
-  inputs: ['classStyles', 'type'],
-  outputs: ['onClick'],
+  selector: 'rio-button',
   styles: [require('./button.css')],
   template: `
     <button
@@ -15,8 +13,10 @@ import { Component, EventEmitter } from 'angular2/core';
     </button>
   `
 })
-export class Button {
-  onClick: EventEmitter<Event> = new EventEmitter();
+export class RioButton {
+  @Input() classStyles: string;
+  @Input() type: string;
+  @Output() onClick: EventEmitter<Event> = new EventEmitter();
 
   handleClick(event) {
     this.onClick.emit(event);

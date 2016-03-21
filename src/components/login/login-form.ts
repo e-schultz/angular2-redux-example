@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input } from 'angular2/core';
+import { Component, EventEmitter, Input, Output } from 'angular2/core';
 import {
   FORM_DIRECTIVES,
   FormBuilder,
@@ -7,67 +7,81 @@ import {
   Validators
 } from 'angular2/common';
 
-import { Form, FormError, FormGroup, FormLabel } from '../form';
-import { Alert } from '../alert';
-import { Button } from '../button';
-import { Input as FormInput} from '../input';
+import { RioForm, RioFormError, RioFormGroup, RioLabel } from '../form';
+import { RioAlert } from '../alert';
+import { RioButton } from '../button';
+import { RioInput } from '../form/input';
 
 @Component({
-  selector: 'login-form',
-  inputs: ['isPending', 'hasError'],
-  outputs: ['onSubmit'],
+  selector: 'rio-login-form',
   directives: [
-    FORM_DIRECTIVES, Alert, Button, FormInput,
-    Form, FormError, FormGroup, FormLabel
+    FORM_DIRECTIVES, RioAlert, RioButton, RioInput,
+    RioForm, RioFormError, RioFormGroup, RioLabel
   ],
   template: `
-    <custom-form
+    <rio-form
       [ngFormModel]="group"
-      (ngSubmit)="handleSubmit()"
-    >
-      <alert status='info' *ngIf="isPending">Loading...</alert>
-      <alert status='error' *ngIf="hasError">
+      (ngSubmit)="handleSubmit()">
+      <rio-alert status='info' *ngIf="isPending">Loading...</rio-alert>
+      <rio-alert status='error' *ngIf="hasError">
         Invalid username and password
-      </alert>
-      <form-group>
-        <form-label>Username</form-label>
-        <form-input
+      </rio-alert>
+      <rio-form-group>
+        <rio-label>Username</rio-label>
+        <rio-input
           inputType='text'
           placeholder='Username'
-          [formControl]="username"></form-input>
-        <form-error *ngIf="username.dirty && !username.valid">
-          <div *ngIf="username.hasError('required')">
-            Username required!
-          </div>
-        </form-error>
-      </form-group>
-       <form-group>
-        <form-label>Password</form-label>
-        <form-input
+          [formControl]="username"></rio-input>
+        <rio-form-error [visible]="showNameWarning()">
+          Username required!
+        </rio-form-error>
+      </rio-form-group>
+      <rio-form-group>
+        <rio-label>Password</rio-label>
+        <rio-input
           inputType='password'
           placeholder='Password'
-          [formControl]="password"></form-input>
-        <form-error *ngIf="password.dirty && !password.valid">
-          <div *ngIf="password.hasError('required')">
-            Password required!
-          </div>
-        </form-error>
-      </form-group>
-      <form-group>
-        <btn type="submit" classStyles="mr1">Login</btn>
-        <btn classStyles="bg-red" (click)="reset()">Clear</btn>
-      </form-group>
-    </custom-form>
+          [formControl]="password"></rio-input>
+        <rio-form-error [visible]="showPasswordWarning()">
+          Password required!
+        </rio-form-error>
+      </rio-form-group>
+      <rio-form-group>
+        <rio-button
+          classStyles="mr1"
+          type="submit">
+          Login
+        </rio-button>
+        <rio-button classStyles="bg-red"
+          (onClick)="reset()">
+          Clear
+        </rio-button>
+      </rio-form-group>
+    </rio-form>
   `
 })
-export class LoginForm {
+export class RioLoginForm {
+  @Input() isPending: boolean;
+  @Input() hasError: boolean;
+  @Output() onSubmit: EventEmitter<Object> = new EventEmitter();
   private username: Control;
   private password: Control;
   private group: ControlGroup;
-  private onSubmit: EventEmitter<Object> = new EventEmitter();
 
   constructor(private builder: FormBuilder) {
     this.reset();
+  }
+
+  showNameWarning() {
+    return this.username.touched
+      && !this.username.valid
+      && this.username.hasError('required');
+  }
+
+  showPasswordWarning() {
+    return this.password.touched
+      && !this.password.valid
+      && this.password.hasError('required');
   }
 
   handleSubmit() {
@@ -77,7 +91,8 @@ export class LoginForm {
   reset() {
     this.username = new Control('', Validators.required);
     this.password = new Control('', Validators.required);
-
+    this.hasError = false;
+    this.isPending = false;
     this.group = this.builder.group({
       username: this.username,
       password: this.password
