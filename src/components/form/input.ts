@@ -8,7 +8,7 @@ import { NgFormControl } from 'angular2/common';
     <input
       [type]="inputType"
       class="block col-12 mb1 input"
-      [placeholder]="placeholder"
+      [attr.placeholder]="placeholder"
       [ngFormControl]="formControl"
     />
   `
