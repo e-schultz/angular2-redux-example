@@ -1,11 +1,4 @@
-import {
-  Component,
-  View,
-  Inject,
-  enableProdMode,
-  provide 
-} from 'angular2/core';
-
+import { enableProdMode, provide } from 'angular2/core';
 import { bootstrap} from 'angular2/bootstrap';
 import { ROUTER_PROVIDERS, APP_BASE_HREF } from 'angular2/router';
 import configureStore from './store/configure-store';
@@ -19,8 +12,8 @@ if (__PRODUCTION__) {
   enableProdMode();
 }
 
-bootstrap(RioSampleApp,
-  [provider(store),
+bootstrap(RioSampleApp, [
+  provider(store),
   ROUTER_PROVIDERS,
   provide(APP_BASE_HREF, { useValue: '/' })
 ]);
