@@ -16,7 +16,6 @@ import { RioCounterPage } from './counter-page';
 
 import {
   RioButton,
-  RioContent,
   RioNavigator,
   RioNavigatorItem,
   RioLogo,
@@ -63,9 +62,9 @@ import {
           </rio-button>
         </rio-navigator-item>
       </rio-navigator>
-      <rio-content>
+      <main>
         <router-outlet *ngIf="isLoggedIn"></router-outlet>
-      </rio-content>
+      </main>
     </div>
   `
 })
