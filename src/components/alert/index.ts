@@ -4,18 +4,17 @@ import { Component, Input } from 'angular2/core';
   selector: 'rio-alert',
   template: `
     <div class="p2 bold"
-      [ngClass]="componentColor[status] || componentColor['info']">
+      [ngClass]="{
+        'bg-blue': status === 'info',
+        'bg-yellow': status === 'warning',
+        'bg-green': status === 'success',
+        'bg-red': status === 'error',
+        'white': status === 'info' || status === 'error'
+      }">
       <ng-content></ng-content>
     </div>
   `
 })
 export class RioAlert {
-  @Input() status;
-
-  private componentColor = {
-    info: 'bg-blue white',
-    warning: 'bg-yellow black',
-    success: 'bg-green black',
-    error: 'bg-red white'
-  };
+  @Input() status = 'info';
 };

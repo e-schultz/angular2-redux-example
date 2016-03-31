@@ -2,19 +2,21 @@ import { Component, Inject, ApplicationRef } from 'angular2/core';
 import { bindActionCreators } from 'redux';
 
 import * as CounterActions from '../actions/counter';
-import { RioCounter } from '../components';
+import { RioContainer, RioCounter } from '../components';
 
 @Component({
   selector: 'counter-page',
-  directives: [ RioCounter ],
+  directives: [ RioContainer, RioCounter ],
   template: `
-    <div class="col col-4">
-      <h1 class="center">Counter</h1>
-      <rio-counter [counter]="counter"
+    <rio-container [size]=2 [center]=true>
+      <h2 class="center caps">Counter</h2>
+
+      <rio-counter
+        [counter]="counter"
         [increment]="increment"
         [decrement]="decrement">
       </rio-counter>
-    </div>
+    </rio-container>
   `
 })
 export class RioCounterPage {
