@@ -26,6 +26,7 @@ import { RioInput } from '../form/input';
       <rio-alert status='error' *ngIf="hasError">
         Invalid username and password
       </rio-alert>
+
       <rio-form-group>
         <rio-label>Username</rio-label>
         <rio-input
@@ -36,6 +37,7 @@ import { RioInput } from '../form/input';
           Username required!
         </rio-form-error>
       </rio-form-group>
+
       <rio-form-group>
         <rio-label>Password</rio-label>
         <rio-input
@@ -46,13 +48,14 @@ import { RioInput } from '../form/input';
           Password required!
         </rio-form-error>
       </rio-form-group>
+
       <rio-form-group>
         <rio-button
-          classStyles="mr1"
+          className="mr1"
           type="submit">
           Login
         </rio-button>
-        <rio-button classStyles="bg-red"
+        <rio-button className="bg-red"
           (onClick)="reset()">
           Clear
         </rio-button>

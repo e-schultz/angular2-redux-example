@@ -14,7 +14,7 @@ import { NgFormControl } from 'angular2/common';
   `
 })
 export class RioInput {
-  @Input() inputType: string;
-  @Input() placeholder: string;
+  @Input() inputType = 'text';
+  @Input() placeholder = '';
   @Input() formControl: NgFormControl;
 };
