@@ -24,8 +24,12 @@ const basePlugins = [
 const devPlugins = [];
 
 const prodPlugins = [
+  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
-    mangle: false,
+    mangle: {
+       keep_fnames: true
+    },
     compress: {
       warnings: false
     }
@@ -39,23 +43,20 @@ const plugins = basePlugins
 module.exports = {
   entry: {
     app: './src/index.ts',
-    shims: './shims/shims_for_IE',
-    vendor: [
+    shims: [
       'es5-shim',
       'es6-shim',
       'es6-promise',
+      './shims/shims_for_IE'
+    ],
+    vendor: [
       'angular2/bundles/angular2-polyfills',
       'angular2/bootstrap',
       'angular2/platform/browser',
       'angular2/platform/common_dom',
       'angular2/core',
       'angular2/router',
-      'angular2/http',
-      'redux',
-      'redux-thunk',
-      'redux-localstorage',
-      'ng2-redux',
-      'redux-logger'
+      'angular2/http'
     ]
   },
 
