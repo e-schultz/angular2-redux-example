@@ -14,7 +14,6 @@ function configureStore(initialState) {
     ..._getEnhancers()
   )(createStore)(rootReducer, initialState);
 
-  _enableHotLoader(store);
   return store;
 }
 
@@ -41,15 +40,6 @@ function _getEnhancers() {
   }
 
   return enhancers;
-}
-
-function _enableHotLoader(store) {
-  if (__DEV__ && module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers');
-      store.replaceReducer(nextRootReducer);
-    });
-  }
 }
 
 function _getStorageConfig() {

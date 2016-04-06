@@ -17,7 +17,7 @@
     "clean": "rimraf dist/",
     "cover": "remap-istanbul -i coverage/chrome/coverage-final.json -o coverage/coverage.json",
     "postcover": "istanbul report lcov text-summary",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server -d --inline --hot --progress --no-info",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server -d --inline --progress --no-info",
     "lint": "tslint './src/**/*.ts'",
     "postinstall": "npm run typings && npm run build",
     "start": "cross-env NODE_ENV=production node server/node-server.js",
