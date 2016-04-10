@@ -57,7 +57,7 @@ import {
             session.getIn(['user', 'lastName'], '') }}
         </rio-navigator-item>
         <rio-navigator-item [hidden]="!isLoggedIn">
-          <rio-button class="bg-red white" (click)="logout()" >
+          <rio-button className="bg-red white" (click)="logout()" >
             Logout
           </rio-button>
         </rio-navigator-item>

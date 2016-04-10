@@ -43,13 +43,11 @@ const plugins = basePlugins
 module.exports = {
   entry: {
     app: './src/index.ts',
-    shims: [
+    vendor: [
       'es5-shim',
       'es6-shim',
       'es6-promise',
-      './shims/shims_for_IE'
-    ],
-    vendor: [
+      './shims/shims_for_IE',
       'angular2/bundles/angular2-polyfills',
       'angular2/bootstrap',
       'angular2/platform/browser',
