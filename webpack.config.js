@@ -49,7 +49,6 @@ module.exports = {
       'es6-promise',
       './shims/shims_for_IE',
       'angular2/bundles/angular2-polyfills',
-      'angular2/bootstrap',
       'angular2/platform/browser',
       'angular2/platform/common_dom',
       'angular2/core',
