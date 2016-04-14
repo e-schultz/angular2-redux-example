@@ -6,6 +6,7 @@ import { NgFormControl } from 'angular2/common';
   directives: [ NgFormControl ],
   template: `
     <input
+      [id]="qaid"
       [type]="inputType"
       class="block col-12 mb1 input"
       [attr.placeholder]="placeholder"
@@ -17,4 +18,5 @@ export class RioInput {
   @Input() inputType = 'text';
   @Input() placeholder = '';
   @Input() formControl: NgFormControl;
+  @Input() qaid: string;
 };

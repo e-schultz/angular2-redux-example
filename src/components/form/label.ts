@@ -1,11 +1,13 @@
-import { Component } from 'angular2/core';
+import { Component, Input } from 'angular2/core';
 
 @Component({
   selector: 'rio-label',
   template: `
-    <label>
+    <label [id]="qaid">
       <ng-content></ng-content>
     </label>
   `
 })
-export class RioLabel {};
+export class RioLabel {
+  @Input() qaid: string;
+};

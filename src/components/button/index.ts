@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from 'angular2/core';
   selector: 'rio-button',
   template: `
     <button
+      [id]="qaid"
       (click)="handleClick($event)"
       type="{{type || 'button'}}"
       class="btn btn-primary {{className}}">
@@ -15,6 +16,7 @@ import { Component, EventEmitter, Input, Output } from 'angular2/core';
 export class RioButton {
   @Input() className: string;
   @Input() type: string;
+  @Input() qaid: string;
   @Output() onClick: EventEmitter<Event> = new EventEmitter();
 
   handleClick(event) {

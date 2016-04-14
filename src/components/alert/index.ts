@@ -3,7 +3,9 @@ import { Component, Input } from 'angular2/core';
 @Component({
   selector: 'rio-alert',
   template: `
-    <div class="p2 bold"
+    <div
+      [id]="qaid"
+      class="p2 bold"
       [ngClass]="{
         'bg-blue': status === 'info',
         'bg-yellow': status === 'warning',
@@ -17,4 +19,5 @@ import { Component, Input } from 'angular2/core';
 })
 export class RioAlert {
   @Input() status = 'info';
+  @Input() qaid: string;
 };
