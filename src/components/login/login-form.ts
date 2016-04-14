@@ -108,8 +108,8 @@ export class RioLoginForm {
   }
 
   reset() {
-    this.username = new Control('', Validators.required);
-    this.password = new Control('', Validators.required);
+    this.username = new Control('user', Validators.required);
+    this.password = new Control('pass', Validators.required);
     this.hasError = false;
     this.isPending = false;
     this.group = this.builder.group({
