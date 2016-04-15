@@ -24,7 +24,7 @@
     "pretest": "rimraf coverage/ & npm run lint",
     "test": "karma start",
     "posttest": "npm run cover",
-    "test:watch": "karma start --singleRun false",
+    "test:watch": "karma start --singleRun false --restartOnFileChange true",
     "typings": "rimraf typings/ && typings install"
   },
   "repository": {
