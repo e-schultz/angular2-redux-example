@@ -18,8 +18,7 @@ $ npm run
 ```bash
 $ npm run dev
 ```
-
-This runs a development mode server with live reload etc.
+This runs a development mode server with live reload etc. Linter warnings will be displayed with each reload.
 
 Open `http://localhost:8080` in your browser.
 
@@ -48,6 +47,12 @@ $ npm t
 ```bash
 $ npm run test:watch
 ```
+
+#### Linting
+```bash
+$ npm run lint
+```
+This will run both code and style linters, but you can run them individually using `npm run lint-ts` and `npm run lint-css`.
 
 #### Coverage
 ```bash

@@ -1,5 +1,4 @@
 @import 'basscss-basic';
-
 @import 'basscss-addons/modules/btn';
 @import 'basscss-addons/modules/btn-primary';
 @import 'basscss-addons/modules/background-colors';
@@ -14,7 +13,6 @@
 @import 'basscss-addons/modules/lighten';
 @import 'basscss-addons/modules/background-images';
 @import 'basscss-addons/modules/darken';
-
 @import 'basscss-type-scale';
 @import 'basscss-typography';
 @import 'basscss-layout';
@@ -25,4 +23,4 @@
 @import 'basscss-flexbox';
 @import 'basscss-position';
 @import 'basscss-border';
-@import 'basscss-hide'; 
+@import 'basscss-hide';
