@@ -1,12 +1,20 @@
 import { Component, Inject, ApplicationRef } from 'angular2/core';
 import { bindActionCreators } from 'redux';
-
+import { AsyncPipe } from 'angular2/common';
 import * as CounterActions from '../actions/counter';
 import { RioContainer, RioCounter } from '../components';
+import {NgRedux} from 'ng2-redux';
+
+declare interface IAppState {
+  counter: Map<string, number>;
+  session: Map<string, any>;
+}
+
 
 @Component({
   selector: 'counter-page',
-  directives: [ RioContainer, RioCounter ],
+  directives: [RioContainer, RioCounter],
+  pipes: [AsyncPipe],
   template: `
     <rio-container [size]=2 [center]=true>
       <h2 id="qa-counter-heading"
@@ -15,7 +23,7 @@ import { RioContainer, RioCounter } from '../components';
       </h2>
 
       <rio-counter
-        [counter]="counter"
+        [counter]="counter$ | async"
         [increment]="increment"
         [decrement]="decrement">
       </rio-counter>
@@ -25,33 +33,22 @@ import { RioContainer, RioCounter } from '../components';
 export class RioCounterPage {
   private disconnect: Function;
   private unsubscribe: Function;
-
+  private counter$: any;
   constructor(
-    @Inject('ngRedux') private ngRedux,
-    private applicationRef: ApplicationRef) {}
+    private ngRedux: NgRedux<IAppState>
+    ) {}
 
   ngOnInit() {
-    this.disconnect = this.ngRedux.connect(
-      this.mapStateToThis,
-      this.mapDispatchToThis)(this);
-
-    this.unsubscribe = this.ngRedux.subscribe(() => {
-      this.applicationRef.tick();
-    });
+    this.counter$ = this.ngRedux
+      .select(n => n.counter.get('count'));
+      
+    this.ngRedux.mapDispatchToTarget(CounterActions)(this);
+    
   }
-
+  
   ngOnDestroy() {
-    this.unsubscribe();
-    this.disconnect();
+    
   }
 
-  mapStateToThis(state) {
-    return {
-      counter: state.counter.get('count')
-    };
-  }
-
-  mapDispatchToThis(dispatch) {
-    return bindActionCreators(CounterActions, dispatch);
-  }
+  
 }

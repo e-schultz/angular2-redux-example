@@ -1,12 +1,13 @@
 {
-  "name": "angular2-redux-starter",
+  "name": "angular2-redux-example",
   "version": "0.2.0",
   "description": "A boiler-plate setup for Angular 2/Redux applications",
   "license": "MIT",
   "keywords": [
     "angular2",
     "redux",
-    "typescript"
+    "typescript",
+    "ng2-redux"
   ],
   "engines": {
     "node": "4.x"
@@ -31,15 +32,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rangle/angular2-redux-starter.git"
+    "url": "https://github.com/e-schultz/angular2-redux-example.git"
   },
   "bugs": {
-    "url": "https://github.com/rangle/angular2-redux-starter/issues"
+    "url": "https://github.com/e-schultz/angular2-redux-example/issues"
   },
   "dependencies": {
     "express": "^4.13.4",
     "helmet": "^1.3.0",
     "http-proxy": "^1.13.2",
+    "ng2-redux": "^2.2.2-beta.2",
     "winston": "^2.1.1"
   },
   "devDependencies": {
@@ -86,7 +88,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.4",
-    "ng2-redux": "^2.0.2",
+    "ng2-redux": "^2.2.1-0",
     "postcss-cssnext": "^2.4.0",
     "postcss-import": "^8.0.2",
     "postcss-loader": "^0.8.1",

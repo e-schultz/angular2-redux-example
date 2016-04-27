@@ -2,11 +2,12 @@
 
 import {createStore, applyMiddleware, compose} from 'redux';
 import {fromJS} from 'immutable';
-import ReduxThunk from 'redux-thunk';
 import logger from './configure-logger';
 import promiseMiddleware from '../middleware/promise-middleware';
 import rootReducer from '../reducers';
+
 const persistState = require('redux-localstorage');
+const ReduxThunk = require('redux-thunk').default;
 
 function configureStore(initialState) {
   const store = compose(
@@ -44,7 +45,7 @@ function _getEnhancers() {
 
 function _getStorageConfig() {
   return {
-    key: 'angular2-redux-seed',
+    key: 'angular2-redux-example',
     serialize: (store) => {
       return store && store.session ?
         JSON.stringify(store.session.toJS()) : store;

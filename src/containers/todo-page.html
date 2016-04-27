@@ -1,0 +1,76 @@
+
+  <rio-container [size]=4 [center]=true>
+    
+      <h2 class="center caps">Todo</h2>
+      <div class="clearfix">
+        <rio-todo-summary [total]="total$ | async" [completed]="completed$ | async"></rio-todo-summary>
+      </div>
+  <div class="clearfix">
+      <div class="col col-4">
+        <input type="checkbox" 
+      [ngModel]="hideCompleted$ | async"
+      (ngModelChange)="filterCompleted()"
+      > Hide Completed
+      </div>
+  </div>
+  <div class="flex flex-wrap">
+    <div class="col-3">
+        <h2 class="center caps">All Todos</h2>
+          <rio-todo-list
+            [todos]="todos$ | async"
+            (todoCompleted)="completeTodo($event)"
+            (todoEdited)="editTodo($event.id,$event.text)"
+            (todoDeleted)="deleteTodo($event)"
+            >
+          </rio-todo-list>
+        
+    </div>
+    <div class="col-3">
+          <h2 class="center caps">Incomplete</h2>
+          <rio-todo-list
+            [todos]="incompleteTodos$ | async"
+            (todoCompleted)="completeTodo($event)"
+            (todoEdited)="editTodo($event.id,$event.text)"
+            (todoDeleted)="deleteTodo($event)"
+            >
+          </rio-todo-list>
+    </div>
+    <div class="col-3">
+          <h2 class="center caps">Completed</h2>
+          <rio-todo-list
+            [todos]="completedTodos$ | async"
+            (todoCompleted)="completeTodo($event)"
+            (todoEdited)="editTodo($event.id,$event.text)"
+            (todoDeleted)="deleteTodo($event)"
+            >
+          </rio-todo-list>
+    </div>
+    <div class="col-3">
+          <h2 class="center caps">Filtered</h2>
+          <rio-todo-list
+            [todos]="filteredTodos$ | async"
+            (todoCompleted)="completeTodo($event)"
+            (todoEdited)="editTodo($event.id,$event.text)"
+            (todoDeleted)="deleteTodo($event)"
+            >
+          </rio-todo-list>
+    </div>
+    
+     
+  </div>
+  <div class="clearfix">
+    <div class="col col-4 mx-auto">
+      <input #newTodo/>
+        <rio-button className="bg-green white" (click)="onAddTodo(newTodo.value);newTodo.value=''">
+            Add
+        </rio-button>
+              
+    </div>
+      
+    <div class="col col-4">
+      <rio-button className="bg-red white" (click)="clearCompleted()">Clear Completed</rio-button>
+    </div><div class="col col-4">
+      <rio-button className="bg-blue white" (click)="completeAll()">Complete All</rio-button>
+    </div>
+  </div>
+</rio-container>

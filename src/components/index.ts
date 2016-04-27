@@ -6,6 +6,8 @@ import { RioLogo } from './logo';
 import { RioLoginModal, RioLoginForm } from './login';
 import { RioNavigator, RioNavigatorItem } from './navigator';
 import { RioModal, RioModalContent } from './modal';
+import { RioTodoList } from './todo-list';
+import { RioTodoSummary } from './todo-summary';
 import {
   RioForm,
   RioFormError,
@@ -13,7 +15,7 @@ import {
   RioLabel,
   RioInput
 } from './form';
-
+export * from './icons';
 export {
   RioAlert,
   RioButton,
@@ -30,5 +32,7 @@ export {
   RioModal,
   RioModalContent,
   RioNavigator,
-  RioNavigatorItem
+  RioNavigatorItem,
+  RioTodoList,
+  RioTodoSummary
 };
