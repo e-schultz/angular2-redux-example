@@ -38,6 +38,9 @@ export interface Todo {
 }
 export interface TodoState extends Array<Todo> { };
 
+const getNextId = (todos): number => todos.reduce(
+  (maxId, todo) => Math.max(todo.id, maxId), -1) + 1;
+
 export default function todos(state: TodoState = INITIAL_STATE,
   action): TodoState {
   switch (action.type) {
@@ -45,7 +48,7 @@ export default function todos(state: TodoState = INITIAL_STATE,
       return [
         ...state,
         {
-          id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+          id: getNextId(state),
           completed: false,
           text: action.text
         }];
